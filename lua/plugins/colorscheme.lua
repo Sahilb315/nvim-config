@@ -1,51 +1,75 @@
 return {
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {},
-  config = function()
-    require("tokyonight").setup({
-      style = "night",
-      styles = {
-        functions = {}
-      },
-      on_colors = function(colors)
-        colors.hint = colors.orange
-        colors.error = "#ff0000"
-      end,
-      transparent = true,
-    })
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		config = function()
+			require("tokyonight").setup({
+				style = "night",
+				styles = {
+					functions = {},
+				},
+				on_colors = function(colors)
+					colors.hint = colors.orange
+					colors.error = "#ff0000"
+				end,
+				transparent = true,
+			})
+		end,
+	},
+	{
+		"ellisonleao/gruvbox.nvim",
+		priority = 1000,
+		config = function()
+			vim.cmd("colorscheme gruvbox")
+		end,
+		opts = ...,
+	},
 
-    vim.cmd("colorscheme tokyonight")
-
-    vim.cmd([[
-      hi NeoTreeNormal guibg=NONE
-      hi NeoTreeDimText guibg=NONE
-      hi NeoTreeEndOfBuffer guibg=NONE
-      hi NeoTreeTitle guibg=NONE
-      hi NeoTreeRootName guibg=NONE
-      hi NeoTreeTab guibg=NONE
-    ]])
-
-    vim.cmd([[
-      hi NeoTreeNormalNC guibg=NONE
-      hi NeoTreeDimTextNC guibg=NONE
-      hi NeoTreeEndOfBufferNC guibg=NONE
-      hi NeoTreeTitleNC guibg=NONE
-      hi NeoTreeRootNameNC guibg=NONE
-      hi NeoTreeTabNC guibg=NONE
-    ]])
-
-    vim.cmd([[
-      hi NeoTreeWinSeparator guifg=#444444 guibg=NONE gui=bold cterm=bold
-      hi NeoTreeWinSeparatorNC guifg=#444444 guibg=NONE gui=bold cterm=bold
-    ]])
-
-    vim.cmd([[
-      hi NeoTreeTitle guifg=#888888 guibg=NONE gui=bold
-      hi NeoTreeRootName guifg=#888888 guibg=NONE gui=bold
-    ]])
-
-  end
+	{
+		"xiyaowong/transparent.nvim",
+		priority = 1000,
+		config = function()
+			-- Optional, you don't have to run setup.
+			require("transparent").setup({
+				-- table: default groups
+				groups = {
+					"Normal",
+					"NormalNC",
+					"Comment",
+					"Constant",
+					"Special",
+					"Identifier",
+					"Statement",
+					"PreProc",
+					"Type",
+					"Underlined",
+					"Todo",
+					"String",
+					"Function",
+					"Conditional",
+					"Repeat",
+					"Operator",
+					"Structure",
+					"LineNr",
+					"NonText",
+					"SignColumn",
+					"CursorLine",
+					"CursorLineNr",
+					"StatusLine",
+					"StatusLineNC",
+					"EndOfBuffer",
+				},
+				-- table: additional groups that should be cleared
+				extra_groups = {},
+				-- table: groups you don't want to clear
+				exclude_groups = {},
+				-- function: code to be executed after highlight groups are cleared
+				-- Also the user event "TransparentClear" will be triggered
+				on_clear = function() end,
+			})
+		end,
+		opts = ...,
+	},
 }
-
