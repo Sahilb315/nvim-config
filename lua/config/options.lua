@@ -21,3 +21,10 @@ vim.opt.hlsearch = true        -- Highlight search results
 vim.opt.incsearch = true       -- Show search results as you type
 vim.opt.completeopt = "menu,menuone,noselect" -- Autocompletion settings
 
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
