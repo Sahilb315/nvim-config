@@ -16,19 +16,12 @@ return {
         vim.keymap.set('n', '<leader>ft', builtin.tags, { desc = "Search tags (for symbols in code)" })
         vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = "Search keymaps" })
         vim.keymap.set('n', '<leader>fr', builtin.grep_string, { desc = "Grep string under cursor" })
-        vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "LSP document symbols" })
-        vim.keymap.set('n', '<leader>fw', builtin.lsp_workspace_symbols, { desc = "LSP workspace symbols" })
         vim.keymap.set('n', '<leader>uc', builtin.colorscheme, { desc = "List available colorschemes" })
-        vim.keymap.set('n', '<leader>qf', builtin.quickfix, { desc = "Quick Fix" })
 
-
-        vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, { desc = "Go to definition" })
-        vim.keymap.set('n', '<leader>gr', builtin.lsp_references, { desc = "Go to references" })
         vim.keymap.set('n', '<leader>sd', builtin.lsp_document_symbols, { desc = "LSP document symbols" })
         vim.keymap.set('n', '<leader>sw', builtin.lsp_workspace_symbols, { desc = "LSP workspace symbols" })
         vim.keymap.set('n', '<leader>sx', builtin.diagnostics, { desc = "Show diagnostics" })
         vim.keymap.set('n', '<leader>ss', vim.lsp.buf.signature_help, { desc = "Show signature help" })
-        -- vim.keymap.set('n', '<leader>sf', vim.lsp.buf.formatting, { desc = "Format code" })
 
         vim.keymap.set('n', '<leader>fn', builtin.treesitter, { desc = "List func names, variables" })
     end
