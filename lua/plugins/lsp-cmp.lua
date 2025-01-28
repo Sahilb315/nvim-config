@@ -31,6 +31,7 @@ return {
 			})
 		end,
 	},
+	{ "tpope/vim-surround" },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -46,23 +47,103 @@ return {
 			local on_attach = function(client, bufnr)
 				local opts = { buffer = bufnr, noremap = true, silent = true }
 
-				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-				vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-				vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
-				vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
+				-- Go to declaration
+				vim.keymap.set(
+					"n",
+					"gD",
+					vim.lsp.buf.declaration,
+					vim.tbl_extend("force", opts, { desc = "Go to declaration" })
+				)
+
+				-- Go to definition
+				vim.keymap.set(
+					"n",
+					"gd",
+					vim.lsp.buf.definition,
+					vim.tbl_extend("force", opts, { desc = "Go to definition" })
+				)
+
+				-- Show hover documentation
+				vim.keymap.set(
+					"n",
+					"K",
+					vim.lsp.buf.hover,
+					vim.tbl_extend("force", opts, { desc = "Show hover documentation" })
+				)
+
+				-- Go to implementation
+				vim.keymap.set(
+					"n",
+					"gi",
+					vim.lsp.buf.implementation,
+					vim.tbl_extend("force", opts, { desc = "Go to implementation" })
+				)
+
+				-- Show signature help
+				vim.keymap.set(
+					"n",
+					"<C-k>",
+					vim.lsp.buf.signature_help,
+					vim.tbl_extend("force", opts, { desc = "Show signature help" })
+				)
+
+				-- Add workspace folder
+				vim.keymap.set(
+					"n",
+					"<leader>wa",
+					vim.lsp.buf.add_workspace_folder,
+					vim.tbl_extend("force", opts, { desc = "Add workspace folder" })
+				)
+
+				-- Remove workspace folder
+				vim.keymap.set(
+					"n",
+					"<leader>wr",
+					vim.lsp.buf.remove_workspace_folder,
+					vim.tbl_extend("force", opts, { desc = "Remove workspace folder" })
+				)
+
+				-- List workspace folders
 				vim.keymap.set("n", "<leader>wl", function()
 					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-				end, opts)
-				vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-				vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+				end, vim.tbl_extend("force", opts, { desc = "List workspace folders" }))
+
+				-- Go to type definition
+				vim.keymap.set(
+					"n",
+					"<leader>D",
+					vim.lsp.buf.type_definition,
+					vim.tbl_extend("force", opts, { desc = "Go to type definition" })
+				)
+
+				-- Rename symbol
+				vim.keymap.set(
+					"n",
+					"<leader>rn",
+					vim.lsp.buf.rename,
+					vim.tbl_extend("force", opts, { desc = "Rename symbol" })
+				)
+
+				-- Code action for normal and visual modes
+				vim.keymap.set(
+					{ "n", "v" },
+					"<leader>ca",
+					vim.lsp.buf.code_action,
+					vim.tbl_extend("force", opts, { desc = "Code action" })
+				)
+
+				-- Go to references
+				vim.keymap.set(
+					"n",
+					"gr",
+					vim.lsp.buf.references,
+					vim.tbl_extend("force", opts, { desc = "Go to references" })
+				)
+
+				-- Format buffer
 				vim.keymap.set("n", "<leader>f", function()
 					vim.lsp.buf.format({ async = false })
-				end, opts)
+				end, vim.tbl_extend("force", opts, { desc = "Format buffer" }))
 			end
 
 			-- Lua LSP
