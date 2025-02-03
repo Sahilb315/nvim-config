@@ -20,7 +20,7 @@ return {
 
 		vim.keymap.set("n", "<leader>sd", builtin.lsp_document_symbols, { desc = "LSP document symbols" })
 		vim.keymap.set("n", "<leader>sw", builtin.lsp_workspace_symbols, { desc = "LSP workspace symbols" })
-		vim.keymap.set("n", "<leader>sx", builtin.diagnostics, { desc = "Show diagnostics" })
+		vim.keymap.set("n", "<leader>xs", builtin.diagnostics, { desc = "Show diagnostics" })
 		vim.keymap.set("n", "<leader>ss", vim.lsp.buf.signature_help, { desc = "Show signature help" })
 
 		vim.keymap.set("n", "<leader>fn", builtin.treesitter, { desc = "List func names, variables" })

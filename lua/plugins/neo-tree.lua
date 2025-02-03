@@ -17,10 +17,27 @@ return {
 					visible = false,
 					hide_dotfiles = true,
 					hide_gitignored = true,
+					hide_by_name = {
+						".git",
+						".DS_Store",
+					},
+					always_show = {
+						".gitignore",
+						".env",
+						"shell.nix",
+					},
+					never_show = {
+						".DS_Store",
+					},
+					show_hidden_count = true,
 				},
+				follow_current_file = {
+					enabled = true,
+				},
+				group_empty_dirs = true,
+				use_libuv_file_watcher = true,
 			},
 		})
-
 		vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", { noremap = true, silent = true, desc = "Toggle Neo-tree" })
 	end,
 }
